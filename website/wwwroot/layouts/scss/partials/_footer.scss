@@ -1,0 +1,63 @@
+/* Footer Partial */
+////////////////////
+
+/////////////////
+// VARIABLES
+/////////////////
+
+$footer_bg-color: #2a1742;
+$footer_text-color: white;
+
+
+
+/////////////////////
+// CONTENT SECTIONS
+/////////////////////
+
+
+footer {
+    background-color: $footer_bg-color;
+    background-image: url(/mediakits/includes/themes/mediakits/images/footer-image.jpg);
+    background-size:cover;
+    padding:55px;
+    
+    
+    h2, p, a, li {
+        color:$footer_text-color;
+        text-decoration:none;
+        padding:0; 
+        margin:0;
+        
+    }    
+    
+    .subtitle {
+        margin-bottom:20px;
+    }
+    
+    ul {
+        list-style-type:none;
+        padding:0;
+        margin:0;
+        
+        li {
+            display:inline-block;
+            
+            a {
+                font-weight:normal;
+            }
+            
+            &:not(:last-child) {
+                margin-right:30px;
+            }
+            
+        }
+        
+    }
+    
+    .copyright {
+        text-align:right;
+        color: $footer_text-color;
+    }
+    
+    
+}

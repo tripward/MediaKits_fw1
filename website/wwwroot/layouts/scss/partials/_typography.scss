@@ -1,0 +1,74 @@
+/* Typography Styles */
+/////////////////
+
+// FONT-FACES
+
+@font-face {
+    font-family: Gilroy;
+    src: url(/mediakits/includes/themes/mediakits/fonts/Gilroy-Light.otf);
+    font-weight:normal;
+}
+
+@font-face {
+    font-family: Gilroy;
+    src: url(/mediakits/includes/themes/mediakits/fonts/Gilroy-ExtraBold.otf);
+    font-weight:bold;
+}
+
+
+/////////////////
+// VARIABLES
+/////////////////
+
+
+
+
+
+/////////////////
+// ELEMENTS
+/////////////////
+
+* {
+    font-family: $text-font;
+    margin:0;
+    padding:0;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family:$header-font;
+    font-weight:bold;    
+}
+
+h2 {
+    color: $primary-color;
+    margin-top:0;
+}
+
+a {
+    color:$link-color;
+    font-weight:bold;
+}
+
+a:hover {
+    color: $link-hover-color;
+}
+
+p {
+    font-size:18px;
+    color: $text-color;
+}
+
+
+
+
+/////////////////
+// MODIFIERS
+/////////////////
+
+
+// removes padding from bootstrap columns
+
+//[class*="col-"] {
+//    padding-left: 0 !important;
+//    padding-right:0 !important;
+//}

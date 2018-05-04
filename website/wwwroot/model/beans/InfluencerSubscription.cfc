@@ -7,7 +7,7 @@ component
 	persistent="true" {
 
 	// primary key
-	property name="Subscriptionid" fieldtype="id";
+	property name="Subscriptionid" fieldtype="id" type="uuid" ormType='string' generator="uuid";
 	
 	// attributes
 	property name="name" datatype="varchar" length="255" required=true message="Name is required." default=""; // Home, Office, Mobile, etc.

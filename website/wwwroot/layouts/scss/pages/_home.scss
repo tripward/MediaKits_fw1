@@ -1,0 +1,125 @@
+/* Home Partial */
+//////////////////
+
+
+///////////////////
+// VARIABLES
+///////////////////
+
+
+.home {
+    
+    main {
+        padding-top:0;
+    }
+
+    #log-in-btn {
+        color:white;
+        font-weight:normal;
+    }
+    
+    #hero-image {
+        background-color:black;
+        height:500px;
+        padding:10px 0 40px 0;
+        background-image: url(/mediakits/includes/themes/mediakits/images/hero-image.jpg);
+        background-size:cover;
+        background-position:top center;
+        
+        #header-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap:wrap;
+            
+
+            h1 {
+                color:white;
+                margin:0;
+                margin-bottom:15px
+            }
+            
+            div {
+                margin-bottom:15px;
+            }
+        }
+        
+
+    }
+    
+    #call-to-action {
+        background-color:$secondary-background-color;
+        
+        h2 {
+            margin:0;
+            font-size:52px;
+        }
+        
+        .subtitle {
+            font-size:24px;
+        }
+        
+        #example-image {
+            background:white;
+            height:300px;
+            margin-top:-80px;
+            margin-bottom:-80px;
+            margin-left:30px;
+            box-shadow:5px 5px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+    }
+    
+    #what-we-do {
+        background:white;
+        
+        .mission:not(:last-child) {
+            margin-bottom:30px;
+        }
+    }
+    
+    #partners {
+        
+        background-color: rgba($secondary-background-color,0.4);
+        
+        h2 {
+            text-align:center;
+            text-transform:uppercase;
+            color: #84b0d1;
+            margin:0 0 20px 0;
+        }
+        
+        ul {
+            list-style-type:none;
+            margin:0;
+            padding:0;
+            text-align:center; 
+            
+            li {
+                display:inline-block;
+                color: #5f6366;
+                font-weight:bold;
+                font-size:24px;
+                
+                &:not(:last-child) {
+                    margin-right:20px;
+                }
+            }
+        }
+    }
+    
+    
+    
+}
+
+@media screen and (max-width:991px) {
+    #example-image {
+        display: block;
+        margin: 30px auto 0 auto !important;
+    }
+    
+    .copyright {
+        text-align: left !important;
+        margin-top: 50px !important;
+    }
+}

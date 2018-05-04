@@ -1,0 +1,22 @@
+/* Button Styles */
+///////////////////
+
+
+a.button, button {
+    
+    padding: 7px 12px;
+    color: white;
+    font-weight: normal;
+    background: #ff5880;
+    border: 0;
+    
+    &:not(:last-child) {
+        margin-right:30px;
+    }
+    
+    &.highlight-bg, &.active {
+        background:#ff5880;
+        font-weight:bold;
+    }
+    
+}

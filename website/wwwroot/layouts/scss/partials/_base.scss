@@ -1,0 +1,86 @@
+/*       Base Partial       */
+//////////////////////////////
+
+
+/////////////////
+// VARIABLES
+/////////////////
+
+// BASE
+
+$wrapper-max-width: 960px;
+
+// COLORS
+
+$background-color: #ececec;
+$secondary-background-color: #d3e9f8;
+
+$text-color: #265f7d;
+$link-color: #ff5880;
+$link-hover-color: #bb2d4f;
+
+$primary-color: #6c5aa7;
+$secondary-color:#820422;
+$tertiary-color:#ff5880;
+
+// SHADOWS
+
+$box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+$text-shadow: 1px 1px 3px black, 1px 1px 3px black;
+
+// FONTS 
+
+$header-font: "Gilroy", Calibri, Helvetica, Arial, sans-serif;
+$text-font: "Open Sans", Calibri, Helvetica, Arial, sans-serif;
+
+/////////////////
+// GLOBAL STYLES
+/////////////////
+
+* {
+    box-sizing:border-box;
+}
+
+html {
+    height:100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height:100%;
+}
+
+main {
+    flex-grow:1;
+}
+
+
+
+section {
+    padding:40px 0;
+}
+
+.row {
+    max-width:1200px;
+    width:100%;
+    margin:auto;
+}
+
+
+/////////////////
+// MODIFIERS
+/////////////////
+
+.right {
+    float:right;
+}
+
+.align-center {
+    text-align:center;
+}
+
+
+.align-right {
+    text-align:right;
+}
