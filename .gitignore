@@ -19,4 +19,6 @@ bin-release/
 # information for Eclipse / Flash Builder.
 
 */WEB-INF/*
+META-INF
+/website/wwwroot/WEB-INF
 
