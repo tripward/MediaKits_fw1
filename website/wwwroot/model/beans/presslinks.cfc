@@ -31,20 +31,21 @@ component
 		
 	// Custom Validations
 	public any function validate() {
-		var obj = super.validate();
-		var errors = obj.getErrors();
-
-		if ( !Len(obj.get('name')) ) {
-			structInsert(errors,'name','presslink Name is required');
+			
+			if ( !Len(variables.name)){
+				structInsert(variables.validationMessages,'name', 'Name is required');
+			}
+			if ( !Len(variables.DisplayDate)){
+				structInsert(variables.validationMessages,'DisplayDate', 'Display Date is required');
+			}
+			
+			return variables.validationMessages;
 		}
-
-		return errors;
-	}
 
 	// Custom Methods
 		
 		public any function getID() {
-			return get('presslinkid');
+			return variables.presslinkid;
 		}
 		
 		public any function populateFromForm(required struct submittedForm) {

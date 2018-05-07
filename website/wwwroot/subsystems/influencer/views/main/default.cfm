@@ -149,11 +149,12 @@ this is the profile in getprofile
 		<!---<cfdump var="#rc.influencerAccount.getProfile().getAwards().getBEANARRAY()#" label="cgi" abort="true" top="3" />--->
 		<h4>Awards</h4>
 		<div id="awards" class="form-group">
+			
 			<cfif arrayLen(rc.influencerAccount.getProfile().getAwards())>
 				<cfloop array="#rc.influencerAccount.getProfile().getAwards()#" index="local.award">
 					<div <div class="" id="">
-						<div>#local.award.getname()# <a href="" id='award_edit_#local.award.awardid#'>Edit</a> <a href="" id='award_delete_#local.award.getawardid()#'>Delete</a></div>
-						<div>#local.award.getPresentedBy()# #local.award.PresentedDate#</div>
+						<div>#local.award.getname()# <a href="" id='award_edit_#local.award.getAwardid()#'>Edit</a> <a href="" id='award_delete_#local.award.getawardid()#'>Delete</a></div>
+						<div>#local.award.getPresentedBy()# #local.award.getPresentedDate()#</div>
 						<div>#local.award.getDescription()#</div>
 					</div>
 				</cfloop>
@@ -162,9 +163,8 @@ this is the profile in getprofile
 			</cfif>
 			<div class="">
 			<h3>Add Award</h3>
-			<form action="/influencer-login-form/?mediakitsFunctionsaction=influencer:main.persistAward" role="form" method="post" enctype="multipart/form-data">
+			<form action="/index.cfm?action=influencer:award.persistAward" role="form" method="post" enctype="multipart/form-data">
 			
-				<input type="hidden" name="#variables.framework.action#" value="#getFullyQualifiedAction('influencer:main.persistAward')#" />
 				<input type="hidden" name="influenceraccountid" value="#rc.influencerAccount.getID()#" />
 			
 				<label for="name">name</label>
@@ -192,7 +192,7 @@ this is the profile in getprofile
 			<cfif arraylen(rc.influencerAccount.getProfile().getPresslinks())>
 				<cfloop array="#rc.influencerAccount.getProfile().getPresslinks()#" index="local.presslink">
 					<div <div class="" id="">
-						<div>#local.presslink.getname()# <a href="" id='presslink_edit_#local.presslink.presslinkid#'>Edit</a> <a href="" id='presslink_delete_#local.presslink.getpresslinkid()#'>Delete</a></div>
+						<div>#local.presslink.getname()# <a href="" id='presslink_edit_#local.presslink.getpresslinkid()#'>Edit</a> <a href="" id='presslink_delete_#local.presslink.getpresslinkid()#'>Delete</a></div>
 						<div>#local.presslink.getpublication()# #local.presslink.getDisplayDate()#</div>
 						<div>#local.presslink.getDescription()#</div>
 					</div>
@@ -202,9 +202,8 @@ this is the profile in getprofile
 			</cfif>
 			<div class="">
 			<h3>Add Press Link</h3>
-			<form action="/influencer-login-form/?mediakitsFunctionsaction=influencer:main.persistPresslink" role="form" method="post" enctype="multipart/form-data">
+			<form action="/index.cfm?action=influencer:presslink.persistPresslink" role="form" method="post" enctype="multipart/form-data">
 			
-				<input type="hidden" name="#variables.framework.action#" value="#getFullyQualifiedAction('influencer:main.persistPresslink')#" />
 				<input type="hidden" name="influenceraccountid" value="#rc.influencerAccount.getID()#" />
 			
 				<label for="name">name</label>
@@ -242,9 +241,8 @@ this is the profile in getprofile
 			</cfif>
 			<div class="">
 			<h3>Add Conference</h3>
-			<form action="/influencer-login-form/?mediakitsFunctionsaction=influencer:main.persistconference" role="form" method="post" enctype="multipart/form-data">
+			<form action="/index.cfm?action=influencer:conference.persistConference" role="form" method="post" enctype="multipart/form-data">
 			
-				<input type="hidden" name="#variables.framework.action#" value="#getFullyQualifiedAction('influencer:main.persistconference')#" />
 				<input type="hidden" name="influenceraccountid" value="#rc.influencerAccount.getID()#" />
 			
 				<label for="name">name</label>

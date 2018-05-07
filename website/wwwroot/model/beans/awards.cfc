@@ -26,15 +26,17 @@ component
 		
 	// Custom Validations
 	public any function validate() {
-		var obj = super.validate();
-		var errors = obj.getErrors();
-
-		if ( !Len(obj.get('name')) ) {
-			structInsert(errors,'username','Award Name is required');
+			
+			if ( !Len(variables.name)){
+				structInsert(variables.validationMessages,'name', 'Name is required');
+			}
+			
+			if ( !Len(variables.PresentedDate)){
+				structInsert(variables.validationMessages,'PresentedDate', 'Presented Date is required');
+			}
+			
+			return variables.validationMessages;
 		}
-
-		return errors;
-	}
 	
 	public any function getProfileDisplay() {
 			

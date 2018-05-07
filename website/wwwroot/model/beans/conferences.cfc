@@ -23,33 +23,24 @@ component
 	//relationships
 	property name="InfluencerProfile" fkcolumn="influencerProfileid" cfc="InfluencerProfile" fieldtype="many-to-one" cascade="none";
 		
-	// Custom Validations
 	public any function validate() {
-		var obj = super.validate();
-		var errors = obj.getErrors();
-
-		if ( !Len(obj.get('name')) ) {
-			structInsert(errors,'name','presslink Name is required');
+		
+		if ( !Len(variables.name)){
+			structInsert(variables.validationMessages,'name', 'Conference Name is required');
 		}
-
-		return errors;
+		
+		if ( !Len(variables.Date)){
+				structInsert(variables.validationMessages,'Date', 'Conference Date is required');
+			}
+		
+		return variables.validationMessages;
 	}
+
 	
-	public any function getProfileDisplay() {
-
-		savecontent variable="myContent" {
-		 
-		}
-		
-		
-		/*WriteDump(var=THIS,top=2,label='goo', abort=true);*/
-		return myContent;
-	}
-
 	// Custom Methods
 		
 		public any function getID() {
-			return get('conferenceid');
+			return variables.conferenceid;
 		}
 		
 		public any function populateFromForm(required struct submittedForm) {
