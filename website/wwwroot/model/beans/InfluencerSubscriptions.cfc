@@ -23,7 +23,7 @@ component
 	property name="fieldsToBeUpdatedByStruct" datatype="varchar" length="1000" persistent="false" default="name,level,description,sort_order,duration,cost,isActive,isOffered,state,zipcode,country" ;
 
 	// relationships
-	property name="InfluencerSubscriptionToAccount" fkcolumn="InfluencerSubscriptionToAccountID" singularname="InfluencerSubscriptionToAccount" cfc="InfluencerSubscriptionToAccount" fieldtype="one-to-many" cascade="delete";
+	/*property name="InfluencerSubscriptionToAccount" fkcolumn="InfluencerSubscriptionToAccountID" singularname="InfluencerSubscriptionToAccount" cfc="InfluencerSubscriptionToAccount" fieldtype="one-to-many" cascade="delete";*/
 	
 	public any function getID(struct myStruct) {
 		return get('Subscriptionid');

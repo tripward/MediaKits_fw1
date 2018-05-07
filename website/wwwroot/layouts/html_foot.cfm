@@ -34,7 +34,7 @@
 	</cfif>
 	
 	
-
+<cfdump var="#session.surfer#" label="cgi" abort="false" top="3" />
 
 	</body>
 </html>

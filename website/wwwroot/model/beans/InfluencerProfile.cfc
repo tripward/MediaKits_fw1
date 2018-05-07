@@ -7,7 +7,7 @@ component
 	persistent="true" {
 
 	// primary key
-	property name="influencerProfileid" fieldtype="id";
+	property name="influencerProfileid" fieldtype="id" type="uuid" ormType='string' generator="uuid";
 
 	// influencerProfile attributes		
 	property name="keywords" datatype="varchar" length="255" default="";
@@ -19,8 +19,8 @@ component
 	property name="twitterPassword" datatype="varchar" length="50" default="";
 	property name="twitterResponse" datatype="varchar" length="3000" default="";
 	property name="twitterResponseDate" datatype="dateTime";
-	property name="twitterFollowedByCount" type="integer" datatype="integer" length="10" default="0";
-	property name="twitterFollowingCount" type="integer" datatype="integer" length="10" default="0";
+	property name="twitterFollowedByCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="twitterFollowingCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="twitterLastUpdate" datatype="dateTime";
 	
 	property name="instagramUserName" datatype="varchar" length="50" default="";
@@ -28,7 +28,7 @@ component
 	property name="instagramResponse" datatype="varchar" length="3000" default="";
 	property name="instagramAccessToken" datatype="varchar" length="1000" default="";
 	property name="instagramAccessTokenSetUpdate" datatype="dateTime" ;
-	property name="instagramFollowersCount" type="integer" datatype="integer" length="10" default="0";
+	property name="instagramFollowersCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="instagramLastUpdate" datatype="dateTime" ;
 	
 	property name="FacebookID" datatype="varchar" length="50" default="";
@@ -41,19 +41,19 @@ component
 	property name="facebookResponse" datatype="varchar" length="3000" default="";
 	property name="facebookLongLivedAccessTokenExpiresIn" datatype="varchar" length="50" default="";
 	property name="facebookLongLivedAccessTokenSetDate" datatype="dateTime" ;
-	property name="facebookFriendsCount" type="integer" datatype="integer" length="10" default="0";
+	property name="facebookFriendsCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="facebookBusinesspageLink" datatype="varchar" length="255" default="";
 	property name="facebookStatsLastUpdate" datatype="dateTime" ;
 	
 	property name="pintrestUserName" datatype="varchar" length="50" default="";
 	property name="pintrestPassword" datatype="varchar" length="50" default="";
 	property name="PintrestResponse" datatype="varchar" length="3000" default="";
-	property name="pintrestFollowersCount" type="integer" datatype="integer" length="10" default="0";
-	property name="pintrestFollowingCount" type="integer" datatype="integer" length="10" default="0";
+	property name="pintrestFollowersCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="pintrestFollowingCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="pintrestLastUpdate" datatype="dateTime";
 	
 	
-	property name="mediakitTemplateID" type="integer" datatype="integer" length="10" default="1";
+	property name="mediakitTemplateID" type="numeric" datatype="numeric" default="1";
 	
 	
 	property name="googleAnalyticsUsername" datatype="varchar" length="50" default="";
@@ -74,26 +74,17 @@ component
 	property name="fieldsToBeUpdatedByStruct" persistent="false"    datatype="varchar" length="1000" default="firstname,lastname,email,address1,address2,address3,address4,city,state,zipcode,country" ;
 
 	// relationships
-	property name="account" fkcolumn="influenceraccountid" cfc="InfluencerAccount" fieldtype="one-to-one" cascade="delete";
-	property name="InfluencerProfileToDemographics" singularname="demographic" cfc="InfluencerProfileToDemographics" linktable="influencerprofiletodemographics" fieldtype="one-to-many" cascade="delete";
-	property name="InfluencerProfileToCategories" singularname="category" cfc="InfluencerProfileToCategories" linktable="InfluencerProfileToCategories" fieldtype="one-to-many" cascade="delete";
+	property name="InfluencerAccount" fkcolumn="influenceraccountid" cfc="InfluencerAccount" fieldtype="one-to-one" cascade="delete";
+	property name="InfluencerProfileToDemographics" singularname="demographic" cfc="InfluencerProfileToDemographics" fieldtype="one-to-many" cascade="delete";
+	property name="InfluencerProfileToCategories" singularname="category" cfc="InfluencerProfileToCategories" fieldtype="one-to-many" cascade="delete";
 	property name="awards" singularname="award" cfc="awards" fieldtype="one-to-many" cascade="delete";
 	property name="presslinks" singularname="presslink" cfc="presslinks" fieldtype="one-to-many" cascade="delete";
 	property name="conferences" singularname="conference" cfc="conferences" fieldtype="one-to-many" cascade="delete";
 
 	// Custom Validations
 	public any function validate() {
-		var obj = super.validate();
-		var errors = obj.getErrors();
 
-		// Hidden Form Fields
-			obj.set('datemodified', Now());
-
-			if ( !Len(obj.get('datecreated')) ) {
-				obj.set('datecreated', Now());
-			}
-
-		return this;
+		return variables.validationMessages;
 	}
 
 	// Custom Methods
@@ -102,7 +93,7 @@ component
 		}
 		
 		public any function getID() {
-			return get('influencerProfileid');
+			return variables.influencerProfileid;
 		}
 		
 		public any function populateFromForm(required struct submittedForm) {
@@ -236,6 +227,7 @@ component
 			}
 			
 			if (structKeyExists(arguments.submittedForm, 'mediakitTemplateID')) {
+				/*WriteDump(var=arguments.submittedForm.mediakitTemplateID,top=2,label='goo', abort=true);*/
 				this.setmediakitTemplateID(arguments.submittedForm.mediakitTemplateID);
 			}
 			

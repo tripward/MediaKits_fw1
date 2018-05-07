@@ -7,12 +7,13 @@ component
 	persistent="true" {
 
 	// primary key
-	property name="categoryid" fieldtype="id";
+	property name="categoryid" fieldtype="id" type="uuid" ormType='string' generator="uuid";
 
 	// attributes
 	property name="name" datatype="varchar" required="true" length="50" default="";
 	property name="keywords" datatype="varchar" length="255" default="";
 	property name="description" datatype="varchar" length="1000" default="";
+	property name="sortOrder" type="numeric" length="3"  default="1";
 	property name="datecreated" datatype="datetime" nullable=true;
 	property name="datemodified" datatype="datetime" nullable=true;
 
@@ -20,7 +21,7 @@ component
 	property name="fieldsToBeUpdatedByStruct" persistent="false"    datatype="varchar" length="1000" default="name,keywords,description" ;
 	
 	//relationships
-	property name="InfluencerProfileToCategories" singularname="category" cfc="InfluencerProfileToCategories" linktable="InfluencerProfileToCategories" fieldtype="one-to-many" cascade="none";
+	property name="InfluencerProfileToCategories" singularname="category" cfc="InfluencerProfileToCategories" fieldtype="one-to-many" cascade="none";
 		
 	// Custom Validations
 	public any function validate() {

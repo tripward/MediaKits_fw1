@@ -7,7 +7,7 @@ component
 	persistent="true" {
 
 	// primary key
-	property name="awardid" fieldtype="id";
+	property name="awardid" fieldtype="id" type="uuid" ormType='string' generator="uuid";
 
 	// attributes
 	property name="name" datatype="varchar" required="true" length="50" default="";

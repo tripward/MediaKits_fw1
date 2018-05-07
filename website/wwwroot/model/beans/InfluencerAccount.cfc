@@ -7,7 +7,7 @@ component
 	persistent="true" {
 
 	// primary key
-	property name="influenceraccountid" fieldtype="id";
+	property name="influenceraccountid" fieldtype="id" type="uuid" ormType='string' generator="uuid";
 
 	// attributes
 	property name="firstname" datatype="varchar" length="255" required=true message="First Name is required." default="";
@@ -31,9 +31,12 @@ component
 	property name="subscriptionStart" datatype="date" length="25" nullable=true;
 	property name="fieldsToBeUpdatedByStruct" persistent="false"    datatype="varchar" length="1000" default="firstname,lastname,email,address1,address2,address3,address4,city,state,zipcode,country" ;
 	property name="influencerloggedIn" datatype="boolean" default="0" persistent="false";
+	
+	property name="datecreated" datatype="datetime" nullable=true;
+	property name="datemodified" datatype="datetime" nullable=true;
 
 	// relationships
-	property name="profile" fieldtype="one-to-one" cfc="InfluencerProfile" cascade="delete";
+	property name="profile" fieldtype="one-to-one" cfc="InfluencerProfile"  mappedby="InfluencerAccount" cascade="delete" inverse="true" lazy="false"    ;
 	property name="InfluencerSubscriptionToAccounts" fieldtype="one-to-many" cfc="InfluencerSubscriptionToAccount" cascade="delete";
 
 	/*property
@@ -49,27 +52,33 @@ component
 		
 		
 		// Custom Validations
-			public any function validate() {
-				var obj = super.validate();
-				var errors = obj.getErrors();
-				
-				
-
-				// Hidden Form Fields
-				obj.set('datemodified', Now());
-
-				if ( !Len(obj.get('datecreated')) ) {
-					obj.set('datecreated', Now());
-				}
-
-				return this;
+		public any function validate() {
+			
+			
+			if ( !Len(variables.firstName)){
+				structInsert(variables.validationMessages,'firstName', 'First Name is required');
 			}
+			
+			if ( !Len(variables.lastName)){
+				structInsert(variables.validationMessages,'lastName', 'Last Name is required');
+			}
+			
+			if ( !Len(variables.email)){
+				structInsert(variables.validationMessages,'email', 'Email is required');
+			}
+
+			if (!structIsEmpty(variables.validationMessages)) {
+				SUPER.setDates();
+			}
+			
+			return variables.validationMessages;
+		}
 
 		// Custom Methods
 			
 			
 			public any function getid() {
-				return get('influenceraccountid');
+				return variables.influenceraccountid;
 			}
 			
 			/*public any function getProfile() {

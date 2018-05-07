@@ -63,9 +63,7 @@ component persistent="false" accessors="true" output="false" extends="baseServic
 		return variables.getIterator();
 	}
 	
-	public any function new() {
-		return variables.factory.getBean(variables.ObjectType);
-	}
+	
 	
 	public boolean function delete(required string id) {
 		

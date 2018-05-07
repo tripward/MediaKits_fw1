@@ -7,7 +7,7 @@ component
 	persistent="true" {
 
 	// primary key
-	property name="InfluencerSubscriptionToAccountid" fieldtype="id";
+	property name="InfluencerSubscriptionToAccountid" fieldtype="id" type="uuid" ormType='string' generator="uuid";
 	// attributes
 	property name="discountPercent" datatype="numeric" length="3" nullable=true;
 	property name="discountDuration" datatype="numeric" length="3" nullable=true;
@@ -20,7 +20,8 @@ component
 	property name="datemodified" datatype="datetime" nullable=true;
 	property name="fieldsToBeUpdatedByStruct" datatype="varchar" persistent="false" length="1000" default="discountPercent,discountDuration,discountStart,subscriptionStart,isActive,transactionid" ;
 
-	property name="account" fkcolumn="influenceraccountid" cfc="InfluencerAccount" fieldtype="many-to-one" cascade="delete";
+	property name="account" fkcolumn="influenceraccountid" cfc="InfluencerAccount" fieldtype="many-to-one" cascade="none";
+	property name="subscription" fkcolumn="IInfluencerSubscriptionID" cfc="InfluencerSubscriptions" fieldtype="many-to-one" cascade="none";
 		
 	/*property
 		name="subscription"

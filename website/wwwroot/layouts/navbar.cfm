@@ -14,7 +14,8 @@
 				<div class="row">
 					<div class="col-md-7" style="color: white;">
 						<a href="/index.cfm?action=influencer:main.default&reload=reload">reload all</a>
-						<a href="/index.cfm?action=influencer_subscribe:main.subscribeForm">subscribe</a>
+						<a href="/index.cfm?action=influencer_subscribe:main.default">subscribe</a>
+						<a href="#buildURL('influencer_login:main.default')#">Login</a>
 						<a href="">Profile</a>
 						<a href="">Generate Media Kit</a>
 					</div>

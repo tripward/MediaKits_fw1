@@ -1,10 +1,10 @@
-component persistent="false" accessors="true" output="false" extends="baseInfluencerService" {
+component persistent="false" accessors="true" output="false" extends="baseService" {
 
 	property name='beanfactory';
 	property name='ObjectType' type="string" default="InfluencerAccount";
-	property name='iteratorVariableName' type="string" default="InfluencerAccounts";
+	property name='tableName' type="string" default="InfluencerAccounts";
 	property name='ObjectIDProp' type="string" default="influenceraccountid";
-	property name='tablename' type="string" default="custom_InfluencerAccounts";
+	property name='tablename' type="string" default="InfluencerAccounts";
 
 	public any function init() {
 		SUPER.init();
@@ -27,34 +27,45 @@ component persistent="false" accessors="true" output="false" extends="baseInflue
 	
 	public any function getQueryByAttributes(required struct searchCriteria) {
 
-		var accountExists.recordCount = 0;
+
 		
-		accountExists=QueryExecute(("SELECT email FROM #variables.tableName# WHERE email = :email"),{email=arguments.email},
+		accountExists=QueryExecute(("SELECT influenceraccountid,firstname,lastname,email FROM #variables.tableName# WHERE email = :email"),{email=arguments.email},
 		{datasource="#variables.datasource#"});
 		/*WriteDump(var=accountExists.recordCount,top=2,label='goo', abort=true);*/
 		return accountExists.recordCount;
 	}
 	
+	public any function getSurferProperties(required string username) {
+
+		local.surferprops=QueryExecute(("SELECT influenceraccountid,firstname,lastname,email FROM #variables.tableName# WHERE email = :email"),{email=arguments.username});
+		return local.surferprops;
+	}
+	
 	public any function getByLoginCreds(required string username='', required string password='' ) {
 
-		/*WriteDump(var=arguments,top=2,label='goo', abort=true);*/
-		/*local.influencerAccount = getBean('InfluencerAccount').loadBy(emailaddress=arguments.username,password=arguments.password);*/
-		local.influencerAccount = getBean('InfluencerAccount').loadBy(email='#arguments.username#');
-
-		return local.influencerAccount;
+		try {
+			local.account = QueryExecute("SELECT influencerAccountID
+			FROM influencerAccounts
+			WHERE email = ( :username)",        
+			 {username={value='#arguments.username#', CFSQLType='cf_sql_char'}});        
+		} catch (any e) {        
+			WriteDump(var=e,top=3,label='error catch getByLoginCreds', abort=true);        
+		} 
+		/*WriteDump(var=local.account,top=2,label='goo', abort=true);*/
+		return local.account;
 	}
 	
 	public any function getAccountIDLoginCreds(required string username='', required string password='' ) {
-		var local.accountID = '';
+		var local.accountIDQry = '';
 		
 		/*local.accountID = QueryExecute(("SELECT influenceraccountid FROM #variables.tableName# WHERE email = :email AND password = :password"),{email=arguments.username,password=arguments.password},*/
-		local.accountQuery = QueryExecute(("SELECT influenceraccountid FROM #variables.tableName# WHERE email = :email"),{email=arguments.username},
+		local.accountQuery = QueryExecute(("SELECT COUNT(influenceraccountid) FROM #variables.tableName# WHERE email = :email"),{email=arguments.username},
 		{datasource="#variables.datasource#"});
 		
 		if (local.accountQuery.recordCount) {
 			local.accountID = local.accountQuery.influenceraccountid;
 		}
-		WriteDump(var=local.accountID,top=2,label='goo', abort=true);
+		WriteDump(var=local.accountIDQry,top=2,label='goo', abort=true);
 
 		return local.accountID;
 	}
@@ -69,23 +80,5 @@ component persistent="false" accessors="true" output="false" extends="baseInflue
 		return result;
 	}
 
-	public any function save(required any saveObj) {
-		
-		local.mySavedBean = arguments.saveObj.save();
-			
-		if ( arguments.saveObj.hasErrors() ) {
- 			WriteDump(arguments.saveObj.getErrors());
- 			WriteDump(var=arguments.saveObj.getInfluencerSubscriptionToAccountIterator().getArray(),top=2,abort=false);
- 			WriteDump(arguments.saveObj);
- 			abort;
- 		
-		} else {
-			
-			return variables.getByUsername(email=arguments.saveObj.getemail());
-		}
-			
-	}
-	
-	
 
 }

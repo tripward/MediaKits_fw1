@@ -1,6 +1,7 @@
 component extends="framework.one" {
 	
-	
+	include '/mediakits_env/requestSettings.cfm';
+	include '/mediakits_env/mappings.cfm';
 	
 	this.name = "mediakits_#hash(GetCurrentTemplatePath())#";
 	this.clientmanagement="true";
@@ -88,7 +89,42 @@ component extends="framework.one" {
 				
 			} 
 	
+	
+	function setupApplication() {
+
+		include '/mediakits_env/applicationSettings.cfm';
+		
+		/*WriteDump(var=this.getBeanFactory().getBean('securityConfig'),top=2,label='goo', abort=true);*/
+		/*<cfdump var="#application['framework.one'].factory#" label="cgi" abort="true" top="3" />*/
+		application.securityConfig = this.getBeanFactory().getBean('securityConfig');
+		/*WriteDump(var=application.securityConfig,top=2,label='goo', abort=true);*/
+		
+		application.su = CreateObject('component', 'model.services.SecurityService').init(application.securityConfig);
+		
+/*<cfdump var="#application.securityConfig#" label="cgi" abort="true" top="3" />*/
+/*<!---<cfset application.securityConfig.antispamyPath = ExpandPath('/') & "security\antiSpamyslashdot.xml" />--->*/
+
+
+
+		
+		/*WriteDump(var=application.securityConfig,top=2,label='goo', abort=true);*/
+		/*application.su = CreateObject('component', 'model.services.SecurityService').init(application.securityConfig);*/
+	}
+	
+	function setupSession() {
+		
+		if (!structkeyExists(session,'surfer')) {
+			session.surfer = variables.getBeanFactory().getBean('surfer');
+		}
+/*WriteDump(var=session,top=2,label='goo', abort=true);*/
+	}
+	
+	
 	function setupRequest() {
+		
+		include '/mediakits_env/requestSettings.cfm';
+		include '/mediakits_env/mappings.cfm';
+		
 		// use setupRequest to do initialization per request
 		request.context.startTime = getTickCount();
 		
@@ -102,7 +138,6 @@ component extends="framework.one" {
 	
 	function onError(exception) {
 		// use setupRequest to do initialization per request
-		request.context.startTime = getTickCount();
 		WriteDump(var=arguments,top=10,label='in onError', abort=true);
 	}
 	

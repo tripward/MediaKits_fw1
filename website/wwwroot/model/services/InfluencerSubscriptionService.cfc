@@ -1,9 +1,9 @@
-component persistent="false" accessors="true" output="false" extends="baseInfluencerService" {
+component persistent="false" accessors="true" output="false" extends="baseService" {
 
-	property name='ObjectType' type="string" default="InfluencerSubscription";
-	property name='iteratorVariableName' type="string" default="InfluencerSubscriptions";
+	property name='ObjectType' type="string" default="InfluencerSubscriptions";
+	property name='tableName' type="string" default="InfluencerSubscriptions";
 	property name='ObjectIDProp' type="string" default="Subscriptionid";
-	property name='tablename' type="string" default="custom_influencersubscriptions";
+	property name='tablename' type="string" default="influencersubscriptions";
 	
 	
 	public any function init() {
@@ -17,43 +17,9 @@ component persistent="false" accessors="true" output="false" extends="baseInflue
 		return this;
 	}
 	
-	public any function get(string id='') {
-		var result = '';
-		if ( Len( trim( arguments.id )) ) {
-			result = variables.factory.getBean(variables.ObjectType).loadBy(subscriptionid=arguments.id);
-		} else {
-			result = new();
-		};
-		return result;
-	}
 	
 	
-	public any function list() {
-		local.list = entityLoad('InfluencerSubscriptions');
-		return entityLoad('InfluencerSubscriptions');
-	}
-
-	public void function save(required any InfluencerSubscription) {
-		var newID = '';
-		
-		if ( Len(arguments.InfluencerSubscription.getID()) ) {
-			lock scope='session' type='exclusive' timeout=10 {
-				r[arguments.Influencer.getID()] = arguments.Influencer;
-			};
-		} else {
-			lock scope='session' type='exclusive' timeout=10 {
-				newID = getNextID();
-				setNextID(getNextID()+1);
-			};
-			arguments.Influencer.setID(newID);
-			lock scope='session' type='exclusive' timeout=10 {
-				r[newID] = arguments.Influencer;
-			};
-		};
-	}
 	
-	
-		
 		public any function insertDefaultSubscriptions() {
 		local.subs = [];
 		/*WriteDump(var=variables.factory,top=2,label='goo', abort=true);*/
