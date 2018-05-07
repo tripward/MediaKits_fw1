@@ -59,9 +59,11 @@ component displayname="influencerMainController" extends="subsystems.basecontrol
 	public void function persistProfile(required struct rc) {
 
 
-		
+		rc.profile = rc.influencerAccount.getprofile();
 		//todo: validation
-		rc.profile = rc.influencerAccount.getprofile().populateFromForm(rc);
+		variables.fw.populate(cfc=rc.influencerAccount);
+		variables.fw.populate(cfc=rc.profile);
+		
 
 		variables.InfluencerProfileService.updateDemographics(profile=rc.influencerAccount.getProfile(),newDemographics=rc.demographics);
 		variables.InfluencerProfileService.updateCategories(profile=rc.influencerAccount.getProfile(),Categories=rc.categories);
@@ -86,9 +88,6 @@ component displayname="influencerMainController" extends="subsystems.basecontrol
 		}
 		
 		
-		
-		
-		
 		/*myFile = expandPath( "somefile.txt" );
 		data = "I'm going to create a file object";
 		FileWrite( "fileObj", data );
@@ -98,7 +97,20 @@ component displayname="influencerMainController" extends="subsystems.basecontrol
 		
 		
 		
-		rc.profile = rc.profile.validate();
+		rc.validationMessages = rc.profile.validate();
+		/*if we have validation issues, go back to the sub form*/
+		if (!structIsEmpty(rc.validationMessages) OR !structIsEmpty(rc.errors)) {
+			variables.fw.redirect(action='influencer_subscribe:main.default', preserve='all');
+			abort;
+		}
+		
+		//save account
+		variables.InfluencerAccountService.save(rc.influencerAccount);
+		// save profile
+		variables.InfluencerProfileService.save(rc.profile);
+		
+		
+		ormFlush();
 		/*if (structIsEmpty(rc.profile.getErrors())) {
 			rc.profile.save();
 			rc.message = arrayAppend(rc.messages, 'profile Saved');

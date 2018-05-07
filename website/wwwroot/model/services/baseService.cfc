@@ -48,7 +48,7 @@ component displayname="baseService" extends="model.baseObject"  persistent="fals
 	}
 	
 	public void function save(required any saveObj) {
-		local.entity = entitySave(arguments.saveObj);
+		entitySave(arguments.saveObj);
 	}
 	
 	public any function get(required any id) {
