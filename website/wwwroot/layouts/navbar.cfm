@@ -16,7 +16,7 @@
 						<a href="/index.cfm?action=influencer:main.default&reload=reload">reload all</a>
 						<a href="/index.cfm?action=influencer_subscribe:main.default">subscribe</a>
 						<a href="#buildURL('influencer_login:main.default')#">Login</a>
-						<a href="">Profile</a>
+						<a href="#buildURL('influencer:main.default')#">Profile</a>
 						<a href="">Generate Media Kit</a>
 					</div>
 					<div class="col-md-3 pull-right">

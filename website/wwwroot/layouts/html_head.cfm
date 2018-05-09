@@ -35,8 +35,8 @@
 
 	
 	
-	<cfif structKeyExists(session,"influenceraccount")>
-		<a href="/infuencer-profile/?mediakitsFunctionsaction=influencer:main.getProfile&influenceraccountid=#session.influenceraccount.getinfluenceraccountid()#">Profile</a>
-	</cfif>
+	<!---<cfif structKeyExists(session,"surfer")>
+		<a href="/infuencer-profile/?mediakitsFunctionsaction=influencer:main.getProfile&influenceraccountid=#rc.influenceraccount.getinfluenceraccountid()#">Profile</a>
+	</cfif>--->
 </head>
 </cfoutput>

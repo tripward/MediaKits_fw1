@@ -7,7 +7,7 @@
 <cfinclude template="/layouts/messages.cfm" >
 <!---<cfdump var="#rc#" label="cgi" abort="false" top="3" />--->
 this is the profile in getprofile
-<div class=""><a href="/infuencer-profile/generate-media-kit/#buildURL('generateMediaKit:main.default&influenceraccountid=#rc.influencerAccount.getID()#')#">Generate MediaKit</a></div>
+<!---<div class=""><a href="/infuencer-profile/generate-media-kit/#buildURL('generateMediaKit:main.default&influenceraccountid=#rc.influencerAccount.getID()#')#">Generate MediaKit</a></div>--->
 
 <div id="status"></div>
 
@@ -18,16 +18,20 @@ this is the profile in getprofile
 		
 		
 		<h4>Facebook Info</h4>
+		
 		<cfif len(trim(rc.influencerAccount.getProfile().getfacebookID()))>
 			<div id="facebook" class="form-group">
 				<div id="fdvfdv">Current Friend Count <span id="fbFriendCount">2</span></div>
 				<!---<label for="facebookBusinesspageLink">Business Link</label>
 				<input id="facebookBusinesspageLink" class="form-control" type="text" size="80" name="facebookBusinesspageLink" value="#rc.influencerAccount.getProfile().getfacebookBusinesspageLink()#" />--->
-				<div class=""><a href="/infuencer-profile/edit-facebook-connection?influenceraccountid='#rc.influencerAccount.getID()#'">Edit Facebook Connection</a></div>
+				<!---<div class=""><a href="/index.cfm?action=influencer:main.persistprofile#'">Edit Facebook Connection</a></div>--->
+				<div class=""><a href="/index.cfm?action=influencer:main.facebook">Edit Facebook Connection</a></div>
 			</div>
 		<cfelse>
-			<div class=""><a href="/infuencer-profile/edit-facebook-connection?influenceraccountid='#rc.influencerAccount.getID()#'">Set up Facebook Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:main.facebook">Set up Facebook Connection</a></div>
 		</cfif>
+		
+		
 		<!---<cfdump var="#rc.socialStats#" label="cgi" abort="true" top="6" />--->
 		<h4>Instagram Info</h4>
 		<cfif len(trim(rc.influencerAccount.getProfile().getinstagramUserName()))>

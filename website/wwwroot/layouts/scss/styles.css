@@ -233,7 +233,7 @@ main {
   font-weight: normal; }
 @font-face {
   font-family: Gilroy;
-  src: url(/mediakits/includes/themes/mediakits/fonts/Gilroy-ExtraBold.otf);
+  src: url(/layouts/fonts/Gilroy-ExtraBold.otf);
   font-weight: bold; }
 * {
   font-family: "Open Sans", Calibri, Helvetica, Arial, sans-serif;

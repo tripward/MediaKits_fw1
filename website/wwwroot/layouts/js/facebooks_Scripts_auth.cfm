@@ -1,4 +1,4 @@
-<cfinclude template="/mediakits/includes/themes/mediakits/templates/inc/facebooks_Scripts_common.cfm" />
+<!---<cfinclude template="/layouts/js/facebooks_Scripts_common.cfm" />--->
 
 <cfoutput>
 	<script>
@@ -66,7 +66,7 @@
 	
 	</script>
 	
-	<cfinclude template="/mediakits/includes/themes/mediakits/templates/inc/facebooks_Scripts_common.cfm" />
+	<cfinclude template="/layouts/js/facebooks_Scripts_common.cfm" />
 	
 
 </cfoutput>
