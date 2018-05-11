@@ -2,7 +2,7 @@
 	<script>
 		
 		
-		var token = '1103427d58604857acddc36d731f4a3e';
+		var token = '#rc.influencerAccount.getProfile().getinstagramAccessToken()#';
 		
 		$.ajax({
 		  url: 'https://api.instagram.com/v1/users/self',

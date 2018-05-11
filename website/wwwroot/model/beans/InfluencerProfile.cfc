@@ -22,13 +22,16 @@ component
 	property name="twitterFollowedByCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="twitterFollowingCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="twitterLastUpdate" datatype="dateTime";
-	
+
+	property name="instagramUserid" datatype="varchar" length="50" default="";
 	property name="instagramUserName" datatype="varchar" length="50" default="";
-	property name="instagramPassword" datatype="varchar" length="50" default="";
+	property name="instagramprofile_picture" datatype="varchar" length="250" default="";
 	property name="instagramResponse" datatype="varchar" length="3000" default="";
 	property name="instagramAccessToken" datatype="varchar" length="1000" default="";
 	property name="instagramAccessTokenSetUpdate" datatype="dateTime" ;
-	property name="instagramFollowersCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="instagrammedia" type="numeric" datatype="numeric" length="10" default="0";
+	property name="instagramfollows" type="numeric" datatype="numeric" length="10" default="0";
+	property name="instagramfollowed_by" type="numeric" datatype="numeric" length="10" default="0";
 	property name="instagramLastUpdate" datatype="dateTime" ;
 	
 	property name="FacebookID" datatype="varchar" length="50" default="";

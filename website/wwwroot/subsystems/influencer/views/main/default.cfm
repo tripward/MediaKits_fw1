@@ -15,33 +15,32 @@ this is the profile in getprofile
 	<div class="col-md-6">
 		
 		
-		
+		dcsdcsdc
 		
 		<h4>Facebook Info</h4>
 		
-		<cfif len(trim(rc.influencerAccount.getProfile().getfacebookID()))>
+		<cfif len(trim(rc.influencerAccount.getProfile().getfacebookLongLivedAccessToken()))>
 			<div id="facebook" class="form-group">
 				<div id="fdvfdv">Current Friend Count <span id="fbFriendCount">2</span></div>
 				<!---<label for="facebookBusinesspageLink">Business Link</label>
 				<input id="facebookBusinesspageLink" class="form-control" type="text" size="80" name="facebookBusinesspageLink" value="#rc.influencerAccount.getProfile().getfacebookBusinesspageLink()#" />--->
 				<!---<div class=""><a href="/index.cfm?action=influencer:main.persistprofile#'">Edit Facebook Connection</a></div>--->
-				<div class=""><a href="/index.cfm?action=influencer:main.facebook">Edit Facebook Connection</a></div>
+				<div class=""><a href="/index.cfm?action=influencer:facebookSetup.default">Edit Facebook Connection</a></div>
 			</div>
 		<cfelse>
-			<div class=""><a href="/index.cfm?action=influencer:main.facebook">Set up Facebook Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:facebookSetup.default">Set up Facebook Connection</a></div>
 		</cfif>
 		
 		
-		<!---<cfdump var="#rc.socialStats#" label="cgi" abort="true" top="6" />--->
+
 		<h4>Instagram Info</h4>
 		<cfif len(trim(rc.influencerAccount.getProfile().getinstagramUserName()))>
 			<div id="instagram" class="form-group">
-				<div id="fdvfdv">Current Followed by Count <span id="instagramCount">#rc.socialStats.instagram.stats.graphql.user.edge_followed_by.count#</span></div>
-				<!---<div id="fdvfdv">Current Follows Count <span id="instagramCount">#rc.socialStats.instagram.stats.user.follows.count#</span></div>--->
-				<div class=""><a href="/infuencer-profile/edit-instagram-connection?influenceraccountid='#rc.influencerAccount.getID()#'">Edit Instagram Connection</a></div>
+				<div id="fdvfdv">Current Followed by Count <span id="instagram-followers">#rc.influencerAccount.getProfile().getinstagramfollowed_by()#</span></div>
+				<div class=""><a href="/index.cfm?action=influencer:InstagramSetup.default">Edit Instagram Connection</a></div>
 			</div>
 		<cfelse>
-			<div class=""><a href="/infuencer-profile/edit-instagram-connection?influenceraccountid='#rc.influencerAccount.getID()#'">Set up Instagram Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:InstagramSetup.default">Set up Instagram Connection</a></div>
 		</cfif>
 		
 	
