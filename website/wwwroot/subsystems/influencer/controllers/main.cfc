@@ -44,7 +44,7 @@ component displayname="influencerMainController" extends="subsystems.basecontrol
 		rc.influencerCats = variables.InfluencerProfileToCategoriesService.getProfileCatsAsList(rc.influencerAccount.getProfile().getinfluencerProfileid());
 
 		rc.socialStats = variables.InfluencerStatsService.getAllStats(rc.influencerAccount);
-		/*WriteDump(var=rc.socialStats,top=2,label='goo', abort=true);*/
+		/*WriteDump(var=rc.socialStats,top=5,label='goo', abort=true);*/
 			/*rc.socialStats = variables.InfluencerStatsService.getAllStats(rc.influencerAccount);*/
 			/*WriteDump(var=rc.socialStats.twitter.stats.asStruct.followers_count,top=7,label='hhhh', abort=false);
 			WriteDump(var=rc.socialStats.instagram.stats.user.followed_by.count,top=7,label='hhhh', abort=false);*/

@@ -13,13 +13,13 @@
 			<cfinclude template="js/instagram_Scripts_profile.cfm" />
 		</cfif>
 		
-		<cfif len(trim(rc.influencerAccount.getProfile().gettwitterUserName()))>
+		<!---<cfif len(trim(rc.influencerAccount.getProfile().gettwitterUserName()))>
 			<cfinclude template="js/twitter_Scripts_profile.cfm" />
-		</cfif>
+		</cfif>--->
 		
-		<cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
+		<!---<cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
 			<cfinclude template="js/pintrest_Scripts_profile.cfm" />
-		</cfif>
+		</cfif>--->
 		
 	</cfif>
 	
@@ -33,7 +33,7 @@
 	</cfif>--->
 	
 	
-<cfdump var="#session.surfer#" label="cgi" abort="false" top="3" />
+
 
 	</body>
 </html>

@@ -50,9 +50,9 @@ component extends="framework.one" {
 				// debugging flag to force reload of cache on each request:
 				reloadApplicationOnEveryRequest = true,
 				// whether to force generation of SES URLs:
-				generateSES = false,
+				generateSES = FALSE,
 				// whether to omit /index.cfm in SES URLs:
-				SESOmitIndex = false,
+				SESOmitIndex = FALSE,
 				// location used to find layouts / views:
 				base = "",
 				// either CGI.SCRIPT_NAME or a specified base URL path:
@@ -62,7 +62,8 @@ component extends="framework.one" {
 				// list of file extensions that FW/1 should not handle:
 				unhandledExtensions = 'cfc',
 				// list of (partial) paths that FW/1 should not handle:
-				unhandledPaths = '/flex2gateway',
+				unhandledPaths = '/apiCatches',
+				/*unhandledPaths = '/flex2gateway,/apiCatches/',*/
 				// flash scope magic key and how many concurrent requests are supported:
 				preserveKeyURLKey = 'fw1pk',
 				maxNumContextsPreserved = 10,
@@ -93,7 +94,7 @@ component extends="framework.one" {
 	function setupApplication() {
 
 		include '/mediakits_env/applicationSettings.cfm';
-		
+		/*WriteDump(var=this.getBeanFactory().getBean('awards'),top=2,label='goo', abort=true);*/
 		/*WriteDump(var=this.getBeanFactory().getBean('securityConfig'),top=2,label='goo', abort=true);*/
 		/*<cfdump var="#application['framework.one'].factory#" label="cgi" abort="true" top="3" />*/
 		application.securityConfig = this.getBeanFactory().getBean('securityConfig');
@@ -128,12 +129,10 @@ component extends="framework.one" {
 		// use setupRequest to do initialization per request
 		request.context.startTime = getTickCount();
 		
-				if (structKeyExists(url,'reload')) {
-        			ormReload();        
-        		}        
-        		
-				
-		//WriteDump(var=request,top=10,label='in app', abort=true);
+			if (structKeyExists(url,'reload')) {
+				ormReload();
+			}
+
 	}
 	
 	function onError(exception) {

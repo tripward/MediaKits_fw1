@@ -18,7 +18,6 @@ this is the profile in getprofile
 		dcsdcsdc
 		
 		<h4>Facebook Info</h4>
-		
 		<cfif len(trim(rc.influencerAccount.getProfile().getfacebookLongLivedAccessToken()))>
 			<div id="facebook" class="form-group">
 				<div id="fdvfdv">Current Friend Count <span id="fbFriendCount">2</span></div>
@@ -47,21 +46,21 @@ this is the profile in getprofile
 		<h4>Twitter Info</h4>
 		<cfif len(trim(rc.influencerAccount.getProfile().gettwitterUserName()))>
 			<div id="twitter" class="form-group">
-				<div id="fdvfdv">Current Twitter Followers Count <span id="twitterFollowerCount">#rc.socialStats.twitter.stats.asStruct.followers_count#</span></div>
+				<div id="fdvfdv">Current Twitter Followers Count <span id="twitter-followers">#rc.socialStats.twitter.stats.asStruct.followers_count#</span></div>
 			</div>
-			<div class=""><a href="/infuencer-profile/edit-twitter-connection?influenceraccountid=#rc.influencerAccount.getID()#">Edit Twitter Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:twitterSetup.default">Edit Twitter Connection</a></div>
 		<cfelse>
-			<div class=""><a href="/infuencer-profile/edit-twitter-connection?influenceraccountid=#rc.influencerAccount.getID()#">Set up Twitter Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:twitterSetup.default">Set up Twitter Connection</a></div>
 		</cfif>
 		
 		<h4>Pintrest Info</h4>
 		<cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
 			<div id="pintrest" class="form-group">
-				<div id="fdvfdv">Pintest Followers <span id="pintrestFollowerCount">#rc.socialStats.pintrest.stats.PINTRESTBOARDCOUNT# with #rc.socialStats.pintrest.stats.PINTRESTFOLLOWERCOUNT# followers.</span></div>
+				<!---<div id="fdvfdv">Pintest Followers <span id="boardCount">#rc.socialStats.pintrest.stats.PINTRESTBOARDCOUNT#</span>< with <span id="pintrestFollowerCount">#rc.socialStats.pintrest.stats.PINTRESTFOLLOWERCOUNT# followers.</span></div>--->
 			</div>
-			<div class=""><a href="/infuencer-profile/edit-pintrest-connection?influenceraccountid=#rc.influencerAccount.getID()#">Edit Pintrest Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:pintrestSetup.default">Edit Pintrest Connection</a></div>
 		<cfelse>
-			<div class=""><a href="/infuencer-profile/edit-pintrest-connection?influenceraccountid=#rc.influencerAccount.getID()#">Set up Pintrest Connection</a></div>
+			<div class=""><a href="/index.cfm?action=influencer:pintrestSetup.default">Set up Pintrest Connection</a></div>
 		</cfif>
 		
 		

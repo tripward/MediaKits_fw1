@@ -668,6 +668,12 @@ component {
         // NOTE: for unhandledPaths, we make the list into an escaped
         // regular expression so we match on subdirectories, meaning
         // /myexcludepath will match '/myexcludepath' and all subdirectories
+        
+        /*WriteDump(var=targetPath,top=2,label='goo', abort=false);
+        WriteDump(var=listFindNoCase( variables.framework.unhandledExtensions,
+                               listLast( targetPath, '.' ) ),top=2,label='goo', abort=false);
+        WriteDump(var=variables.framework.unhandledPathRegex,top=2,label='goo', abort=true);*/
+        
         return listFindNoCase( variables.framework.unhandledExtensions,
                                listLast( targetPath, '.' ) ) ||
             REFindNoCase( '^(' & variables.framework.unhandledPathRegex & ')',

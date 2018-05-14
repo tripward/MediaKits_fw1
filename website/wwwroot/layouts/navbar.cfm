@@ -13,11 +13,15 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<div class="row">
 					<div class="col-md-7" style="color: white;">
-						<a href="/index.cfm?action=influencer:main.default&reload=reload">reload all</a>
-						<a href="/index.cfm?action=influencer_subscribe:main.default">subscribe</a>
+						<a href="/?reload=reload">reload all</a>
+						<a href="#buildURL('influencer_subscribe:main.default')#">subscribe</a>
 						<a href="#buildURL('influencer_login:main.default')#">Login</a>
 						<a href="#buildURL('influencer:main.default')#">Profile</a>
 						<a href="">Generate Media Kit</a>
+						<!---#buildURL('influencer:main.default')#
+						#buildURL( action = 'influencer:main.default')#
+						#buildURL('influencer:main')#--->
+						<!---hhh#buildURL( action='product.list' )#--->
 					</div>
 					<div class="col-md-3 pull-right">
 						<form method="post" id="searchForm" class="navbar-form navbar-right" role="search">

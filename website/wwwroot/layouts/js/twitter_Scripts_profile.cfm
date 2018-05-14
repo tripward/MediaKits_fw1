@@ -1,7 +1,7 @@
 <cfoutput>
 	<script>
 		
-		var twitter_username = 'SilvaWebDesigns';
+		var twitter_username = '#rc.influencerAccount.getProfile().getTwitterUserName()#';
 	
 		$.ajax({
 		  url: "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=" + twitter_username,
