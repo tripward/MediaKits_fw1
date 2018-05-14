@@ -43,12 +43,14 @@
 			//now that we have a code, go get the token
 			local.pintrest_token_response = rc.pintrestConnection.makeAccessTokenRequest(code=rc.code);
 			local.pintrest_combined_response.Tokne_response = local.pintrest_token_response;
-			WriteDump(var=local.pintrest_token_response,top=2,label='goo', abort=true);
+			/*WriteDump(var=local.pintrest_combined_response,top=2,label='goo', abort=true);*/
+			
 			//if we fgot the token populate and save the profile
 			if (local.pintrest_token_response.success) {
 				
 				local.deserializedResponse = deserializeJSON(local.pintrest_token_response.content);
-				/*WriteDump(var=local.deserializedResponse,top=2,label='goo', abort=false);*/
+				WriteDump(var=local.deserializedResponse,top=2,label='goo', abort=false);
+				WriteDump(var=rc,top=2,label='goo', abort=true);
 				
 				
 				rc.influencerAccount.getProfile().setpintrestLongLivedAccessToken(local.deserializedResponse.access_token);
@@ -62,7 +64,7 @@
 				httpService.setUrl( "https://graph.pintrest.com/me?access_token=#local.deserializedResponse.access_token#" );
 				// this is the cfscript way to grab the response
 				local.idresponse = httpResponse = httpService.send().getPrefix();
-				/*WriteDump(var=local.idresponse,top=2,label='fgbbf', abort=true);*/
+				WriteDump(var=local.idresponse,top=2,label='fgbbf', abort=true);
 				local.pintrest_combined_response.profile_response = local.idresponse;
 				
 				
