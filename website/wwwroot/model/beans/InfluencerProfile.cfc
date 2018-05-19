@@ -50,12 +50,16 @@ component
 	
 	property name="pintrestUserName" datatype="varchar" length="50" default="";
 	property name="pintrestPassword" datatype="varchar" length="50" default="";
+	property name="pintrestid" datatype="varchar" length="50" default="";
 	property name="pintrestLongLivedAccessToken" datatype="varchar" length="1000" default="";
 	property name="pintrestLongLivedAccessTokenType" datatype="varchar" length="1000" default="";
-	property name="facebookLongLivedAccessTokenSetDate" datatype="dateTime" ;
+	property name="pintrestLongLivedAccessTokenSetDate" datatype="dateTime" ;
+	property name="pintrestUserURL" datatype="varchar" length="1000" default="";
 	property name="PintrestResponse" datatype="varchar" length="3000" default="";
-	property name="pintrestFollowersCount" type="numeric" datatype="numeric" length="10" default="0";
-	property name="pintrestFollowingCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="pintrestPinsCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="pintrestfollowingCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="pintrestfollowersCount" type="numeric" datatype="numeric" length="10" default="0";
+	property name="pintrestboardsCount" type="numeric" datatype="numeric" length="10" default="0";
 	property name="pintrestLastUpdate" datatype="dateTime";
 	
 	

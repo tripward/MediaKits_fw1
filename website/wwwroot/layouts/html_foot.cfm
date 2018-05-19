@@ -3,6 +3,12 @@
 	<script src="/layouts/css/bootstrap/js/bootstrap.min.js"></script>
 
 
+		<cfscript>
+        	//todo: reuse
+			include "/mediakits_env/providerData.properties.cfm";
+	        
+        </cfscript>
+<!---<cfdump var="#rc.influencerAccount.getProfile()#" label="cgi" abort="true" top="3" />--->
 	<cfif structKeyExists(rc,'influencerAccount')><!--- AND listLast(cgi.pATH_INFO, '/') IS 'infuencer-profile'--->
 		
 		<cfif len(trim(rc.influencerAccount.getProfile().getfacebookLongLivedAccessToken()))>
@@ -16,10 +22,10 @@
 		<!---<cfif len(trim(rc.influencerAccount.getProfile().gettwitterUserName()))>
 			<cfinclude template="js/twitter_Scripts_profile.cfm" />
 		</cfif>--->
-		
-		<!---<cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
+
+		<cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
 			<cfinclude template="js/pintrest_Scripts_profile.cfm" />
-		</cfif>--->
+		</cfif>
 		
 	</cfif>
 	

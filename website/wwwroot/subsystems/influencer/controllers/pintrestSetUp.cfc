@@ -43,49 +43,76 @@
 			//now that we have a code, go get the token
 			local.pintrest_token_response = rc.pintrestConnection.makeAccessTokenRequest(code=rc.code);
 			local.pintrest_combined_response.Tokne_response = local.pintrest_token_response;
-			/*WriteDump(var=local.pintrest_combined_response,top=2,label='goo', abort=true);*/
+			WriteDump(var=local.pintrest_token_response,top=2,label='goo', abort=false);
 			
 			//if we fgot the token populate and save the profile
 			if (local.pintrest_token_response.success) {
 				
 				local.deserializedResponse = deserializeJSON(local.pintrest_token_response.content);
-				WriteDump(var=local.deserializedResponse,top=2,label='goo', abort=false);
-				WriteDump(var=rc,top=2,label='goo', abort=true);
+				
 				
 				
 				rc.influencerAccount.getProfile().setpintrestLongLivedAccessToken(local.deserializedResponse.access_token);
 				rc.influencerAccount.getProfile().setpintrestLongLivedAccessTokenType(local.deserializedResponse.token_type);
 				rc.influencerAccount.getProfile().setpintrestLongLivedAccessTokenSetDate(now());
 				
+				
+				/*WriteDump(var=rc.influencerAccount.getProfile(),top=2,label='goo', abort=false);
+				WriteDump(var=rc,top=2,label='goo', abort=true);*/
+				
 				// there's a built-in CFC that handles this in CF9+
 				httpService = new http();
 				httpService.setMethod( "get" );
 				// and reference it here
-				httpService.setUrl( "https://graph.pintrest.com/me?access_token=#local.deserializedResponse.access_token#" );
+				/*httpService.setUrl( "https://graph.pintrest.com/me?access_token=#local.deserializedResponse.access_token#" );*/
+				httpService.setUrl( "https://api.pinterest.com/v1//me?access_token=#local.deserializedResponse.access_token#" );
 				// this is the cfscript way to grab the response
 				local.idresponse = httpResponse = httpService.send().getPrefix();
-				WriteDump(var=local.idresponse,top=2,label='fgbbf', abort=true);
-				local.pintrest_combined_response.profile_response = local.idresponse;
+				WriteDump(var=local.idresponse,top=2,label='fgbbf', abort=false);
+				
+				if (local.idresponse.status_code IS '200') {                
+                	
+                	local.profile = deserializeJSON(local.idresponse.filecontent);
+					WriteDump(var=local.profile,top=2,label='fgbbf', abort=false);
+                	
+                	
+                	rc.influencerAccount.getProfile().setpintrestUserURL(local.profile.data.url);
+                	rc.influencerAccount.getProfile().setpintrestID(local.profile.data.id);
+                	/*first_name%2Cid%2Clast_name%2Curl*/
+                	
+                	foo = 'https://api.pinterest.com/v1/users/ward5593/?access_token=#local.deserializedResponse.access_token#&client_secret=#variables.providerInfo[variables.provider].clientSecret#&fields=bio%2Ccounts%2Cusername';
+                	WriteDump(var=foo,top=2,label='goo', abort=false);
+                	// there's a built-in CFC that handles this in CF9+
+					httpService = new http();
+					httpService.setMethod( "get" );
+					// and reference it here
+					/*httpService.setUrl( "https://graph.pintrest.com/me?access_token=#local.deserializedResponse.access_token#" );*/
+					httpService.setUrl( "#foo#" );
+					local.pintrestBioResponse = httpResponse = httpService.send().getPrefix();
+					WriteDump(var=local.pintrestBioResponse,top=2,label='fgbbf', abort=false);
+					/*https://api.pinterest.com/v1/users/tripward/?access_token=access_token=#local.deserializedResponse.access_token#&fields=first_name%2Cid%2Clast_name%2Curl*/
+					
+					
+					if (local.pintrestBioResponse.status_code IS '200') {
+                    	
+                    	local.pintrestBio = deserializeJSON(local.pintrestBioResponse.filecontent);
+                    	/*WriteDump(var=local.pintrestBio,top=5,label='local.pintrestBio', abort=true);*/
+                    	rc.influencerAccount.getProfile().setpintrestUserName(local.pintrestBio.data.username);
+                    	rc.influencerAccount.getProfile().setpintrestPinsCount(local.pintrestBio.data.counts.pins);
+                    	rc.influencerAccount.getProfile().setpintrestfollowingCount(local.pintrestBio.data.counts.following);
+                    	rc.influencerAccount.getProfile().setpintrestfollowersCount(local.pintrestBio.data.counts.followers);
+                    	rc.influencerAccount.getProfile().setpintrestboardsCount(local.pintrestBio.data.counts.boards);
+                    	rc.influencerAccount.getProfile().setpintrestResponse(local.pintrestBioResponse.filecontent);
+                    }
+                    else {
+                    	WriteOutput("pintrest bio call failed");abort;
+                    }
 				
 				
-				
-				//
-				local.pintrest_profile_Response = deserializeJSON(local.idresponse.filecontent);
-				/*WriteDump(var=local.pintrest_profile_Response,top=2,label='goo', abort=true);*/
-				if (local.idresponse.status_code IS '200') {            
-	            	rc.influencerAccount.getProfile().setpintrestID(local.pintrest_profile_Response.id);            
-	            }            
-	            else {            
-	            	//todo:error handling
-	            	WriteDump(var=local.idresponse,top=2,label='in pintreste profile call', abort=true);
-	            }
-				
-				
-				local.pintrest_combined_response_serialized = serializeJSON(local.pintrest_combined_response);
-				rc.influencerAccount.getProfile().setpintrestResponse(local.pintrest_combined_response_serialized);
-				
-				
-				
+				}
+				else {
+					WriteOutput("payment Failed");abort;	
+				}
 				// save profile
 				variables.InfluencerProfileService.save(rc.influencerAccount.getProfile());
 				ormFlush();

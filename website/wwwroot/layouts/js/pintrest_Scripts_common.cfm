@@ -4,8 +4,8 @@
 
 	<script>
 		  window.pAsyncInit = function() {
-        PDK.init({
-            appId: "4952900742051542490",
+        	PDK.init({
+            appId: "#variables.providerInfo['pintrest'].clientId#",
             cookie: false
         });
     };

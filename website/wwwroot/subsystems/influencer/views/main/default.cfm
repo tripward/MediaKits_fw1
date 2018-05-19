@@ -56,7 +56,10 @@ this is the profile in getprofile
 		<h4>Pintrest Info</h4>
 		<cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
 			<div id="pintrest" class="form-group">
-				<!---<div id="fdvfdv">Pintest Followers <span id="boardCount">#rc.socialStats.pintrest.stats.PINTRESTBOARDCOUNT#</span>< with <span id="pintrestFollowerCount">#rc.socialStats.pintrest.stats.PINTRESTFOLLOWERCOUNT# followers.</span></div>--->
+				Pin Count <span id="pintrestPinsCount">#rc.influencerAccount.getProfile().getpintrestPinsCount()#</span>
+				Following Count<span id="pintrestFollowingCount">#rc.influencerAccount.getProfile().getpintrestfollowingCount()#</span>
+				Followers Count<span id="pintrestFollowersCount">#rc.influencerAccount.getProfile().getpintrestfollowersCount()#</span>
+				Boards Count<span id="pintrestBoardsCount">#rc.influencerAccount.getProfile().getpintrestboardsCount()#</span>
 			</div>
 			<div class=""><a href="/index.cfm?action=influencer:pintrestSetup.default">Edit Pintrest Connection</a></div>
 		<cfelse>
