@@ -50,8 +50,8 @@ component extends="model.services.oauth2" accessors="true" {
 	    httpService.setCharset( "utf-8" );
 	    httpService.setUrl( getAccessTokenEndpoint() );
 	    
-	    var oauth_signature_type = 'PLAINTEXT'
-	    var oauth_signature = 'PLAINTEXT'   
+	    var oauth_signature_type = 'PLAINTEXT';
+	    var oauth_signature = 'PLAINTEXT';   
 	    
 	    
 	    httpService.addParam( type="header", name=item[ 'oauth_consumer_key' ],  value=item[ '#client_id#' ] );

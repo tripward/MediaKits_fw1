@@ -5,7 +5,7 @@ component extends="framework.one" {
 	
 	this.name = "mediakits_#hash(GetCurrentTemplatePath())#";
 	this.clientmanagement="true";
-	this.setClientCookies = "false";
+	this.setClientCookies = "true";
 	this.sessionmanagement = "true";
 	this.sessiontimeout="#createtimespan(0,1,0,0)#";
 	this.applicationtimeout="#createtimespan(5,0,0,0)#";
@@ -16,7 +16,7 @@ component extends="framework.one" {
 
  try {
 	this.ormsettings = {
-		cfclocation="model.beans",
+		cfclocation="model\beans",
 		dbcreate="update",
 		dialect = 'MySQL',
 		logsql="true",

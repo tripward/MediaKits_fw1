@@ -4,7 +4,6 @@ component persistent="false" accessors="true" output="false" extends="baseServic
 	property name='ObjectType' type="string" default="InfluencerProfile";
 	property name='tableName' type="string" default="InfluencerProfile";
 	property name='ObjectIDProp' type="string" default="InfluencerProfileid";
-	property name='tablename' type="string" default="InfluencerProfile";
 
 	public any function init() {
 		SUPER.init();

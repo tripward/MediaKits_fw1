@@ -26,7 +26,7 @@ component
 		property name="datemodified" datatype="datetime" nullable=true;
 
 
-		property name="InfluencerProfile" fkcolumn="influencerProfileid" cfc="InfluencerProfile" fieldtype="many-to-one" cascade="none";
+		property name="InfluencerProfile" fkcolumn="influencerProfileid" cfc="InfluencerProfile" fieldtype="many-to-one" cascade="all";
 		
 		
 	// Custom Validations

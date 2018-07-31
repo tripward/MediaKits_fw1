@@ -7,12 +7,13 @@
 <body>
 <cfoutput>
 		<cfinclude template="navbar.cfm" />
-		<h1>#rc.title#</h1>
-		<cfoutput>#body#</cfoutput>	<!--- body is result of views --->
-		<p style="font-size: small;">
-			Powered by FW/1 version <cfoutput>#variables.framework.version#</cfoutput>.<br />
-			This request took <cfoutput>#getTickCount() - rc.startTime#</cfoutput>ms.
-		</p>
+        <div id="content">
+            <cfoutput>#body#</cfoutput>	<!--- body is result of views --->
+            <p id="page_load_info" style="font-size: small;">
+                Powered by FW/1 version <cfoutput>#variables.framework.version#</cfoutput>.<br />
+                This request took <cfoutput>#getTickCount() - rc.startTime#</cfoutput>ms.
+            </p>
+        </div>
 		
 </cfoutput>
 <cfinclude template="footer.cfm" />

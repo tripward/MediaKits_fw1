@@ -20,14 +20,14 @@ component
 	property name="datemodified" datatype="datetime" nullable=true;
 	property name="fieldsToBeUpdatedByStruct" datatype="varchar" persistent="false" length="1000" default="discountPercent,discountDuration,discountStart,subscriptionStart,isActive,transactionid" ;
 
-	property name="account" fkcolumn="influenceraccountid" cfc="InfluencerAccount" fieldtype="many-to-one" cascade="none";
-	property name="subscription" fkcolumn="IInfluencerSubscriptionID" cfc="InfluencerSubscriptions" fieldtype="many-to-one" cascade="none";
+	property name="account" fkcolumn="influenceraccountid" cfc="InfluencerAccount" fieldtype="many-to-one" cascade="all";
+	property name="subscription" fkcolumn="IInfluencerSubscriptionID" cfc="InfluencerSubscriptions" fieldtype="many-to-one" cascade="all";
 		
 	/*property
 		name="subscription"
 		relatesTo="InfluencerSubscription"
 		fieldtype="many-to-one"
-		cascade="none"
+		cascade="all"
 		fkcolumn="IInfluencerSubscriptionID";*/
 		
 		public any function getID(struct myStruct) {

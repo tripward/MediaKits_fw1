@@ -25,6 +25,9 @@
 
 	<!--- jQuery --->
 	<script src="/layouts/js/external/jquery.min.js"></script>
+    
+    
+	<script src="/layouts/js/main.js"></script>
 
 	<!--- FAV AND TOUCH ICONS --->
 	<!---<link rel="shortcut icon" href="#$.siteConfig('assetPath')#/images/favicon.ico">--->

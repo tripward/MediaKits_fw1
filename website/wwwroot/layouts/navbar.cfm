@@ -1,28 +1,30 @@
-<cfoutput>
-<header class="navbar-wrapper">
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">home</a>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<cfif rc.title NEQ "Home">
+    <cfoutput>
+<header>
+	<nav role="navigation">
+		
+			<div class="navbar-brand-wrapper">
+				<a class="navbar-brand" href="/">Media_Kits</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar_links">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
 			</div><!--- /.navbar-header --->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<div class="row">
-					<div class="col-md-7" style="color: white;">
-						<a href="/?reload=reload">reload all</a>
-						<a href="#buildURL('influencer_subscribe:main.default')#">subscribe</a>
-						<a href="#buildURL('influencer_login:main.default')#">Login</a>
-						<a href="#buildURL('influencer:main.default')#">Profile</a>
-						<a href="">Generate Media Kit</a>
+			<ul class="navbar_links collapse">
+				
+					
+						<li><a href="/?reload=reload">reload all</a></li>
+						<li><a href="#buildURL('influencer_subscribe:main.default')#">subscribe</a></li>
+						<li><a href="#buildURL('influencer_login:main.default')#">Login</a></li>
+						<li><a href="#buildURL('influencer:main.default')#">Profile</a></li>
+						<li><a href="">Generate Media Kit</a></li>
 						<!---#buildURL('influencer:main.default')#
 						#buildURL( action = 'influencer:main.default')#
 						#buildURL('influencer:main')#--->
 						<!---hhh#buildURL( action='product.list' )#--->
-					</div>
+<!--
+			
 					<div class="col-md-3 pull-right">
 						<form method="post" id="searchForm" class="navbar-form navbar-right" role="search">
 							<div class="input-group">
@@ -38,10 +40,11 @@
 							<input type="hidden" name="noCache" value="1">
 							
 						</form>
-					</div><!--- /search --->
-				</div><!--- /.row --->
-			</div><!--- /.navbar-collapse --->
-		</div><!--- /.container --->
+					</div>
+-->
+        </ul>
+
 	</nav><!--- /nav --->
 </header>
 </cfoutput>
+</cfif>

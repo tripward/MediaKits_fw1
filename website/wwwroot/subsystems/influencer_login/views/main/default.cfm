@@ -2,26 +2,30 @@
 
 </cfsilent>
 
+
 <cfoutput>
 
 <cfinclude template="/layouts/messages.cfm" >
 
 <div class="row">
-	<div class="col-md-6">
-		<h4>login</h4>
+	<div class="col-md-6 centered">
 		<!---<form role="form" method="post">--->
-		<form action="#buildURL('influencer_login:main.doLogin')#" role="form" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="Username">Username</label>
-				<input id="username" class="form-control" type="text" name="username" value="" />
+        <div id="login-form" class="pane">
+		      <form action="#buildURL('influencer_login:main.doLogin')#" role="form" method="post" enctype="multipart/form-data">
+            
+		    <h1>Login</h1>
+			<div class="field">
+				<input id="username" type="text" required pattern=".{1,}" name="username" value="" />
+				<label for="username">Username</label>
 			</div>
-			<div class="form-group">
-				<label for="password">password</label>
-				<input id="password" class="form-control" type="text" name="password" value="" />
+			<div class="field">
+				<input id="password" type="password" required pattern=".{1,}" name="password" value="" />
+				<label for="password">Password</label>
 			</div>
 			
-			<button type="submit" class="btn btn-default" value="Save Registration">Submit</button>
+			<button type="submit" class="right" value="Save Registration">Submit</button>
 		</form>
+        </div>
 	</div>
 </div>
 
