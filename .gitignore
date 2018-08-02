@@ -7,6 +7,8 @@ bin-release/
 
 # Other files and folders
 .settings/
+.vagrant
+fw1_4_initial
 
 # Executables
 *.swf

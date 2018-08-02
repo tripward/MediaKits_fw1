@@ -33,6 +33,13 @@ variables.providerInfo = {
 		'authEndpoint'        : 'https://api.pinterest.com/oauth/',
 		'accessTokenEndpoint' : 'https://api.pinterest.com/v1/oauth/token',
 		'redirect_uri': 'https://mediakits.loc/apiCatches/pintrestAuthDesitation.cfm'
+	},
+	'linkedin': {
+		'clientId'    : '77xcc3lwwi4s6o',//On twitter reffered to as app id
+		'clientSecret': 'CjowW6oz6gyj2DJH',//On twitter reffered to as consumer secret
+		'authEndpoint'        : 'https://api.pinterest.com/oauth/',
+		'accessTokenEndpoint' : 'https://api.pinterest.com/v1/oauth/token',
+		'redirect_uri': 'https://mediakits.loc/apiCatches/pintrestAuthDesitation.cfm'
 	}
 };
 </cfscript>
