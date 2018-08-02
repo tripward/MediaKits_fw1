@@ -3,7 +3,6 @@ component persistent="false" accessors="true" output="false" extends="baseServic
 	property name='ObjectType' type="string" default="InfluencerSubscriptions";
 	property name='tableName' type="string" default="InfluencerSubscriptions";
 	property name='ObjectIDProp' type="string" default="Subscriptionid";
-	property name='tablename' type="string" default="influencersubscriptions";
 	
 	
 	public any function init() {

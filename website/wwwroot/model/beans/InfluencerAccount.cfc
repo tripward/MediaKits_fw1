@@ -31,9 +31,7 @@ component
 	property name="subscriptionStart" datatype="date" length="25" nullable=true;
 	property name="fieldsToBeUpdatedByStruct" persistent="false"    datatype="varchar" length="1000" default="firstname,lastname,email,address1,address2,address3,address4,city,state,zipcode,country" ;
 	property name="influencerloggedIn" datatype="boolean" default="0" persistent="false";
-	
-	property name="datecreated" datatype="datetime" nullable=true;
-	property name="datemodified" datatype="datetime" nullable=true;
+
 
 	// relationships
 	property name="profile" fieldtype="one-to-one" cfc="InfluencerProfile"  mappedby="InfluencerAccount" cascade="delete" inverse="true" lazy="false"    ;

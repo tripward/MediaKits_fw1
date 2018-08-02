@@ -22,7 +22,7 @@ component
 	property name="fieldsToBeUpdatedByStruct" persistent="false" datatype="varchar" length="1000" default="name,keywords,description" ;
 
 	//relationships
-	property name="InfluencerProfileToDemographics" singularname="demographic" cfc="InfluencerProfileToDemographics" fieldtype="one-to-many" cascade="none";
+	property name="InfluencerProfileToDemographics" singularname="demographic" cfc="InfluencerProfileToDemographics" fieldtype="one-to-many" cascade="all";
 
 	// Custom Validations
 	public any function validate() {

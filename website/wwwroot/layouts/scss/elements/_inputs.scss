@@ -1,8 +1,45 @@
+input[type="text"], input[type="password"] {
+    display:block;
+    font-size:14px;
+    background: transparent;
+    border:0;
+    border-bottom: 1px solid lightgray;
+    outline: 0;
+    width: 100%;
+    margin-bottom:20px;
+}
+
+textarea {
+    display:block;
+    font-size:14px;
+    background: #ededed;
+    border:0;
+    outline: 0;
+    width: 100%;
+    margin-bottom:20px;
+    padding: 5px;
+}
+
 .field {
     
     position:relative;
     padding-top:15px;
-    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    
+    input, textarea {
+        margin-bottom:10px;
+        transition: all 0.2s;
+        
+        &[disabled] {
+            background:transparent !important;
+        }
+    }
+    
+    textarea+label {
+        top:20px;
+        left:5px;
+    }
     
     label {
         position:absolute;
@@ -15,39 +52,66 @@
         font-weight:normal;
     }
     
+    input:valid+label, input:focus+label, textarea:valid+label, textarea:focus+label, input:not([value=""])+label, textarea:not([value=""])+label {    
+        font-size:10px;
+        opacity:1;
+        top:0;
+        font-weight:bold;
+        left:0;
+    }
+    
+    input:focus+label, textarea:focus+label {
+        color:#ff5880;
+    }
+    
+    .edit-link {
+        display:none;
+    }
+    
+    input[disabled]~.edit-link, textarea[disabled]~.edit-link {
+        display:block;
+        margin-left:10px;
+    }
+
+    
+    
+}
+
+
+.dark .field {
+        
+    input {
+        background: rgba(0, 0, 0, 0.09);
+        padding:5px;
+        border-bottom:0;
+    }
+
+    label {
+        position:absolute;
+        font-size:14px;
+        pointer-events:none;
+        top:20px;
+        left:5px;
+        transition:all 0.1s;
+        opacity:1;
+        color: rgba(255,255,255,0.6);
+        font-weight:normal;
+    }
+
     input:valid+label, input:focus+label {    
         font-size:10px;
         opacity:1;
         top:0;
         font-weight:bold;
     }
-    
+
     input:focus+label {
-        color:#ff5880;
+        color:white;
     }
 
-    
-    
+    .edit-link {
+        color:white;
+    }
 }
 
 
-input[type="text"] {
-    display:block;
-    font-size:14px;
-    background: transparent;
-    border:0;
-    border-bottom: 1px solid lightgray;
-    outline: 0;
-    width: 100%;
-    margin-bottom:20px;
-}
-
-
-form {
-    margin: 20px;
-    margin-top: 0;
-    padding:20px;
-    background:white;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-}

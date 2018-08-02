@@ -1,0 +1,45 @@
+.MK-modal {
+    
+    display:none;
+    background:rgba(0,0,0,0.4);
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin:auto;
+    
+    &.visible {
+        display:flex; 
+    }
+    
+    .MK-modal_content {
+        margin:auto;
+        width:100%;
+        max-width:600px;
+        height:auto;
+        margin:auto;
+        
+        .MK-modal_header {
+            color: white;
+            background: $primary-color;
+            margin: 0;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        
+        .MK-modal_body {
+            background:white;
+            padding:20px;    
+            
+            &:after {
+                clear: both;
+                content: "";
+                display: table;
+            }
+        }
+        
+    }
+    
+    
+}

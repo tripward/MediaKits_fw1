@@ -1,5 +1,5 @@
 <cfoutput>
-  <div style="border: solid green 2px; padding: 20px;">
+  <div>
     #body#
   </div>
 </cfoutput>

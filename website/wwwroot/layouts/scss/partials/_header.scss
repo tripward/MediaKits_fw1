@@ -13,20 +13,12 @@
 /////////////////////
 
 header {   
-    background-image: url(/mediakits/includes/themes/mediakits/images/footer-image.jpg);
+    background-image: url(/layouts/images/footer-image.jpg);
     background-size:cover;
     display: flex;
-    height: 84px;
     
-    .row {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        
-        h1 {
-            color:white;
-            margin:0;
-        }
+    
+    
         
         #logged-in-name {
             color:white;
@@ -36,28 +28,46 @@ header {
         }
 
         nav {
-            display:inline-block;
-            margin-top: 8px;
-            margin-bottom:-20px;
+            display:flex;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            justify-content: space-between;
+            padding: 10px;
+            
+            .navbar-brand {
+                color:white;
+                font-size:36px;
+                font-family:$header-font;
+            }
+            
+            .icon-bar {
+                background:white;
+            }
             
             ul {
                 display: flex;
                 justify-content: flex-end;
                 margin-bottom:0;
+                align-items: center;
+                flex-direction:column;
+                transition:all 0.2s !important;
                 
                 li {
                     list-style-type:none;
-                    padding:10px;
+                    transition:background 0.1s;
                     
                     a {
                         font-size: 14px;
-                        color:white;
-                        text-decoration:none;
-                        font-weight:normal;                        
+                        color:white !important;
+                        text-decoration:none !important;
+                        font-weight:normal;    
+                        padding:10px;  
+                        display:inline-block;
                     }
                     
                     &:hover {
-                        background: rgba(255,88,128,0.4);
+                        background: rgba(255,88,128,0.4);                        
                     }
                     
                     &.active {
@@ -76,12 +86,26 @@ header {
                     }
                     
                 }
+                
+                
+                
+                @media (min-width: 768px) {
+                        display: flex!important;
+                        flex-direction:row;
+                }
+                
+                &.collapsing {
+                    align-items:flex-start !important;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                flex-direction:column;
             }
              
         }
         
-        
-    }
+    
     
    
 }

@@ -7,4 +7,3 @@
 	application.emailBCC = "";
 	application.devAdminEmailAddress = "";
 </cfscript>
-

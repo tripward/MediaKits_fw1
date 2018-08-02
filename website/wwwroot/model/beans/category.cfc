@@ -21,7 +21,7 @@ component
 	property name="fieldsToBeUpdatedByStruct" persistent="false"    datatype="varchar" length="1000" default="name,keywords,description" ;
 	
 	//relationships
-	property name="InfluencerProfileToCategories" singularname="category" cfc="InfluencerProfileToCategories" fieldtype="one-to-many" cascade="none";
+	property name="InfluencerProfileToCategories" singularname="category" cfc="InfluencerProfileToCategories" fieldtype="one-to-many" cascade="all";
 		
 	// Custom Validations
 	public any function validate() {
