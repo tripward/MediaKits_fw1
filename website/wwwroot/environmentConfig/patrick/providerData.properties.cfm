@@ -37,7 +37,7 @@ variables.providerInfo = {
 };
 </cfscript>
 
-https://dev.twitter.com/web/sign-in/implementing
+<!---https://dev.twitter.com/web/sign-in/implementing--->
 <!---
 
 This properties file can be extended should you wish to test the providers using real 

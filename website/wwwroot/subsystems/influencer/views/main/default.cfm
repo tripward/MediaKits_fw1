@@ -63,8 +63,8 @@
                                 <td id="twitter-followers" class="value" ><a class="add-link" href="/index.cfm?action=influencer:twitterSetup.default">Add</a></td>
                             </tr>
                         </cfif>
-                            
-                        <cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName()))>
+               
+                        <cfif len(trim(rc.influencerAccount.getProfile().getPintrestUserName())) AND structKeyExists(rc.socialStats,'pintrest')>
                             <tr>
                                 <td class="variable">Pinterest <a class="edit-link" href="/index.cfm?action=influencer:pintrestSetup.default">(edit)</a></td>
                                 <td id="pintrestFollowerCount" class="value"><span id="boardCount">#rc.socialStats.pintrest.stats.PINTRESTFOLLOWERCOUNT# (#rc.socialStats.pintrest.stats.PINTRESTBOARDCOUNT# boards)</span></td>
@@ -72,7 +72,7 @@
                         <cfelse>
                             <tr>
                                 <td class="variable">Pinterest</td>
-                                <td id="twitter-followers" class="value" ><a class="add-link" href="/index.cfm?action=influencer:pintrestSetup.default">Add</a></td>
+                                <td id="pintrestFollowerCount" class="value" ><a class="add-link" href="/index.cfm?action=influencer:pintrestSetup.default">Add</a></td>
                             </tr>
                         </cfif>
                             
@@ -197,29 +197,32 @@
                     <a id="add-conference" href="##" class="modal-link btn add-item-button">Add Conference</a>
                 </div>   
                    
-
-
-                 <div class="tags-section">
-                    <h3>Demographics</h3>
-                    <hr/>
-                    <ul class="tags-list">
-                        <li class="tag">Female</li>
-                        <li class="tag">Age 12-16</li>
-                        <li class="tag">Age 17-24</li>
-                    </ul>
-                     <a id="manage-demographics" href="##" class="modal-link btn add-item-button" >Manage Tags</a>
-                 </div>
+				<div class="tags-section">
+					<h3>Demographics</h3>
+					<hr/>
+					
+					<cfif arrayLen(rc.influencerAccount.getProfile().getInfluencerProfileToDemographics())>
+						<ul class="tags-list">
+							<cfloop array="#rc.influencerAccount.getProfile().getInfluencerProfileToDemographics()#" index="local.demographic">
+								<li class="tag">#local.demographic.getDemographic().getName()#</li>
+							</cfloop>
+						</ul>
+					</cfif>
+					<a id="manage-demographics" href="##" class="modal-link btn add-item-button" >Manage Tags</a>
+				</div>
 
                  <div class="tags-section">
                     <h3>Categories</h3>
                     <hr/>
-                    <ul class="tags-list">
-                        <li class="tag">Architecture</li>
-                        <li class="tag">Cake</li>
-                        <li class="tag">Medicine</li>
-                        <li class="tag">Forestry</li>
-                        <li class="tag">Web Design</li>
-                    </ul>
+                    <cfif arrayLen(rc.influencerAccount.getProfile().getInfluencerProfileToCategories())>
+						<ul class="tags-list">
+							<cfloop array="#rc.influencerAccount.getProfile().getInfluencerProfileToCategories()#" index="local.category">
+								<li class="tag">#local.category.getCategory().getName()#</li>
+							</cfloop>
+						</ul>
+					</cfif>
+					
+                    
                     <a id="manage-categories" href="##" class="modal-link btn add-item-button" >Manage Categories</a>
                  </div>
 

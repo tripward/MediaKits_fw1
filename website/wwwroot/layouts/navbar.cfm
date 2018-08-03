@@ -18,7 +18,7 @@
 						<li><a href="#buildURL('influencer_subscribe:main.default')#">subscribe</a></li>
 						<li><a href="#buildURL('influencer_login:main.default')#">Login</a></li>
 						<li><a href="#buildURL('influencer:main.default')#">Profile</a></li>
-						<li><a href="">Generate Media Kit</a></li>
+						<li><a href="#buildURL('influencer:generateMediakit.default')#">Generate Media Kit</a></li>
 						<!---#buildURL('influencer:main.default')#
 						#buildURL( action = 'influencer:main.default')#
 						#buildURL('influencer:main')#--->

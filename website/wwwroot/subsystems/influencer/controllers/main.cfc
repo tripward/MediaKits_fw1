@@ -19,7 +19,7 @@ component displayname="influencerMainController" extends="subsystems.basecontrol
 			}
 			
 			rc.influencerAccount = variables.InfluencerAccountService.get(id=session.surfer.getInfluenceraccountid());
-			
+			/*WriteDump(var=rc.influencerAccount.getProfile(),top=2,label='goo', abort=true);*/
 			if (isNull(rc.influencerAccount)) {
 				/*account Doesnt exist, the account ID may have been comprimised*/
 				variables.fw.redirect(action='influencer_login:main.default', preserve='all');
@@ -65,11 +65,17 @@ component displayname="influencerMainController" extends="subsystems.basecontrol
 		variables.fw.populate(cfc=rc.profile);
 		
 
-		variables.InfluencerProfileService.updateDemographics(profile=rc.influencerAccount.getProfile(),newDemographics=rc.demographics);
-		variables.InfluencerProfileService.updateCategories(profile=rc.influencerAccount.getProfile(),Categories=rc.categories);
+		
+		if (structKeyExists(rc,'demographics')) {        
+			variables.InfluencerProfileService.updateDemographics(profile=rc.influencerAccount.getProfile(),newDemographics=rc.demographics);
+		}
+		
+		if (structKeyExists(rc,'categories')) { 
+			variables.InfluencerProfileService.updateCategories(profile=rc.influencerAccount.getProfile(),Categories=rc.categories);
+		}
 		
 		if (structKeyExists(rc,'headshotFilename') AND len(rc.headshotFilename)) {
-			WriteDump(var=rc,top=2,label='rccccc', abort=false);
+			WriteDump(var=rc.headshotFilename,top=2,label='rccccc', abort=false);
 			
 			
 			rc.uploadedFile = fileUpload( getTempDirectory(), "headshotFilename", "image/jpeg,image/pjpeg", "MakeUnique" );

@@ -25,7 +25,7 @@ component persistent="false" accessors="true" output="false" extends="Influencer
 		/*WriteDump(var=arguments.account.getProfile().getpintrestUsername(),top=2,label='goo', abort=true);*/
 		var stats = variables.getStatsMap();
 		stats.fullcallResponse = variables.getGeneralInfoFeed(arguments.account).filecontent;
-		WriteDump(var=stats.fullcallResponse,top=2,label='goo', abort=true);
+		/*WriteDump(var=stats.fullcallResponse,top=2,label='goo', abort=true);*/
 		
 		local.expanded = deserializeJSON(stats.fullcallResponse);
 		/*WriteDump(var=deserializeJSON(stats.fullcallResponse),top=5,label='goo', abort=true);*/
